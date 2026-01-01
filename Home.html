@@ -165,7 +165,9 @@
 .discount {
   color: #d32f2f;
   font-size: 13px;
+  margin-left: 6px;
 }
+
 
 
   </style>
@@ -221,13 +223,13 @@
   <p>Size: King (100×108)</p>
 
   <label><b>Color:</b></label>
-  <select id="bedsheet-color" onchange="updateBedSheet()">
-    <option value="grey" data-price="395">Grey</option>
-    <option value="taupe" data-price="395">Taupe</option>
-    <option value="white" data-price="395">White</option>
+  <select id="bedsheet-color" onchange="updateBedSheet(this)">
+   <option value="grey" data-mrp="790">Grey</option>
+      <option value="taupe" data-mrp="790">Taupe</option>
+      <option value="white" data-mrp="730">White</option>
   </select>
 </div>
- <div class="price">
+<div class="price">
       <span class="mrp">₹<span id="bedsheet-mrp">790</span></span><br>
       <span class="offer">₹<span id="bedsheet-offer">553</span></span>
       <span class="discount">(30% OFF)</span>
@@ -251,14 +253,18 @@
   <p>Size: 17×27</p>
 
   <label><b>Color:</b></label>
-  <select id="pillow-color" onchange="updatePillow()">
-    <option value="grey" data-price="65">Steel Grey</option>
-    <option value="brown" data-price="65">Brown</option>
-        <option value="white" data-price="65">white</option>
+  <select id="pillow-color" onchange="updatePillow(this)">
+    <option value="grey" data-mrp="80">Steel Grey</option>
+    <option value="brown" data-mrp="80">Brown</option>
+        <option value="white" data-mrp="80">white</option>
 
   </select>
 </div>
-  <div class="price" id="pillow-price">₹65</div>
+  <div class="price">
+      <span class="mrp">₹<span id="pillow-mrp">80</span></span><br>
+      <span class="offer">₹<span id="pillow-offer">64</span></span>
+      <span class="discount">(20% OFF)</span>
+    </div>
 
   <div class="card-buttons">
   <a class="btn" href="tel:+918080124034">Call Now</a>
@@ -276,13 +282,18 @@
   <h4 id="towel-name">Hotel Towel – 500 GSM</h4>
 
   <label><b>Color:</b></label>
-  <select id="towel-color" onchange="updateTowel()">
-    <option value="white" data-price="300">white</option>
-    <option value="taupe" data-price="200">Taupe</option>
-    <option value="brown" data-price="100">Brown</option>
+  <select id="towel-color" onchange="updateTowel(this)">
+    <option value="white" data-mrp="310">white</option>
+    <option value="brown" data-mrp="398">brown</option>
+    <option value="taupe" data-mrp="398">Taupe</option>
+
   </select>
 </div>
-  <div class="price" id="towel-price">₹199</div>
+    <div class="price">
+      <span class="mrp">₹<span id="towel-mrp">310</span></span><br>
+      <span class="offer">₹<span id="towel-offer">217</span></span>
+      <span class="discount">(30% OFF)</span>
+    </div>
 
   <div class="card-buttons">
   <a class="btn" href="tel:+918080124034">Call Now</a>
@@ -316,9 +327,15 @@
 
   </div>
 <script>
-function updateBedSheet() {
-  const color = document.getElementById("bedsheet-color").value;
-  const price = document.querySelector("#bedsheet-color option:checked").dataset.price;
+function updateBedSheet(select) {
+  if (!select) return;
+
+  const color = select.value;
+  const mrp = Number(select.options[select.selectedIndex].dataset.mrp);
+
+
+  const discountPercent = 30;
+  const offerPrice = Math.round(mrp * (100 - discountPercent) / 100);
 
   const imgMap = {
     grey: "/Images/bed_sheet_grey.jpeg",
@@ -327,7 +344,7 @@ function updateBedSheet() {
   };
 
   document.getElementById("bedsheet-img").src = imgMap[color];
-document.getElementById("bedsheet-mrp").innerText = mrp;
+ document.getElementById("bedsheet-mrp").innerText = mrp;
   document.getElementById("bedsheet-offer").innerText = offerPrice;
 
   const  msg =
@@ -339,9 +356,16 @@ document.getElementById("bedsheet-mrp").innerText = mrp;
     "https://wa.me/918080124034?text=" + encodeURIComponent(msg);
 }
 
-function updateTowel() {
-  const color = document.getElementById("towel-color").value;
-  const price = document.querySelector("#towel-color option:checked").dataset.price;
+function updateTowel(selt) {
+  if (!selt) return;
+
+  const color3= selt.value;
+  const mrp3= Number(selt.options[selt.selectedIndex].dataset.mrp);
+
+
+  const discountPercent3 = 30;
+  const offerPrice3= Math.round(mrp3 * (100 - discountPercent3) / 100);
+
 
   const imgMap = {
     taupe: "/Images/towel_taupe.jpeg",
@@ -350,17 +374,29 @@ function updateTowel() {
 
   };
 
-  document.getElementById("towel-img").src = imgMap[color];
-  document.getElementById("towel-price").innerText = "₹" + price;
+  document.getElementById("towel-img").src = imgMap[color3];
+document.getElementById("towel-mrp").innerText = mrp3;
+  document.getElementById("towel-offer").innerText = offerPrice3;
 
-  const msg = `Hi, I am interested in Hotel Towel (${color}) – Price ₹${price}`;
-  document.getElementById("towel-whatsapp").href =
-    "https://wa.me/+918080124034?text=" + encodeURIComponent(msg);
+   const  msg3 =
+    `Hi, I want to order Towel (${color3}).\n` +
+    `MRP: ₹${mrp3}\n` +
+    `Offer Price (30% OFF): ₹${offerPrice3}`;
+
+  document.getElementById("bedsheet-whatsapp").href =
+    "https://wa.me/918080124034?text=" + encodeURIComponent(msg3);
 }
 
-function updatePillow() {
-  const color = document.getElementById("pillow-color").value;
-  const price = document.querySelector("#pillow-color option:checked").dataset.price;
+function updatePillow(selval) {
+  if (!selval) return;
+
+  const color2 = selval.value;
+  const mrp2 = Number(selval.options[selval.selectedIndex].dataset.mrp);
+
+
+  const discountPercent2 = 20;
+  const offerPrice2= Math.round(mrp2 * (100 - discountPercent2) / 100);
+
 
   const imgMap = {
     grey: "/Images/greypillow.jpeg",
@@ -368,12 +404,17 @@ function updatePillow() {
     white: "/Images/White_pillow.jpeg"
   };
 
-  document.getElementById("pillow-img").src = imgMap[color];
-  document.getElementById("pillow-price").innerText = "₹" + price;
+  document.getElementById("pillow-img").src = imgMap[color2];
+  document.getElementById("pillow-mrp").innerText = mrp2;
+  document.getElementById("pillow-offer").innerText = offerPrice2;
 
-  const message = `Hi, I am interested in Pillow Cover (${color}) – Price ₹${price}`;
-  document.getElementById("pillow-whatsapp").href =
-    "https://wa.me/918080124034?text=" + encodeURIComponent(message);
+  const  msg2 =
+    `Hi, I want to order Pillow (${color2}).\n` +
+    `MRP: ₹${mrp2}\n` +
+    `Offer Price (30% OFF): ₹${offerPrice2}`;
+
+  document.getElementById("bedsheet-whatsapp").href =
+    "https://wa.me/918080124034?text=" + encodeURIComponent(msg2);
 }
 function filterProducts() {
   const checked = Array.from(document.querySelectorAll('.sidebar input[type="checkbox"]:checked'))
@@ -399,6 +440,8 @@ function filterProducts() {
 }
 
 updateBedSheet();
+updatePillow();
+updateTowel();
 </script>
 <div style="background:#f9f9f9; padding:20px; margin-top:30px; border-radius:8px; font-size:14px; color:#333;">
   <strong>Terms & Conditions</strong>
