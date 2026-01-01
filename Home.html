@@ -180,7 +180,7 @@
   <img src="./Images/surya-living-logo.png" alt="Surya Living Logo" class="logo">
 </div>
 
-    <h1><span style="font-size:22px;font-weight:400;">Premium Accessories for Modern Living/span></h1>
+    <h1><span style="font-size:22px;font-weight:400;">Premium Accessories for Modern Living</span></h1>
   </div>
 
 
@@ -313,8 +313,11 @@
   <h4>Fleece Blanket – Camel | Quality - Double</h4>
   <p>Color: Camel</p>
 </div>
-  <div class="price">₹449</div>
-
+  <div class="price">
+      <span class="mrp">₹<span id="blanket-mrp">898</span></span><br>
+      <span class="offer">₹<span id="blanket-offer">628</span></span>
+      <span class="discount">(30% OFF)</span>
+    </div>
   <div class="card-buttons">
   <a class="btn" href="tel:+918080124034">Call Now</a>
   <a class="btn whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
@@ -416,6 +419,29 @@ function updatePillow(selval) {
   document.getElementById("bedsheet-whatsapp").href =
     "https://wa.me/918080124034?text=" + encodeURIComponent(msg2);
 }
+
+
+function updateBlanket() {
+  const mrp4 = 898;
+  const discountPercent4 = 30;
+  const offerPrice4 = Math.round(mrp4 * (100 - discountPercent4) / 100);
+
+  document.getElementById("blanket-mrp").innerText = mrp4;
+  document.getElementById("blanket-offer").innerText = offerPrice4;
+
+  const msg4 =
+    `Hi, I want to order Fleece Blanket (Camel).\n` +
+    `MRP: ₹${mrp4}\n` +
+    `Offer Price (30% OFF): ₹${offerPrice4}`;
+
+  document.getElementById("blanket-whatsapp").href =
+    "https://wa.me/918080124034?text=" + encodeURIComponent(msg4);
+}
+
+document.addEventListener("DOMContentLoaded", updateBlanket);
+
+
+
 function filterProducts() {
   const checked = Array.from(document.querySelectorAll('.sidebar input[type="checkbox"]:checked'))
                        .map(cb => cb.value);
