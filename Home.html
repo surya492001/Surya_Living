@@ -11,7 +11,7 @@
     /* HEADER / HERO */
     .hero {
       background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-  url('../Images/cover.jpg') center/cover no-repeat;
+  url('./Images/cover.jpg') center/cover no-repeat;
       height: 65vh;
       display: flex;
       align-items: center;
@@ -224,8 +224,8 @@
 
   <label><b>Color:</b></label>
   <select id="bedsheet-color" onchange="updateBedSheet(this)">
-   <option value="grey" data-mrp="790">Grey</option>
       <option value="taupe" data-mrp="790">Taupe</option>
+         <option value="grey" data-mrp="790">Grey</option>
       <option value="white" data-mrp="730">White</option>
   </select>
 </div>
@@ -254,8 +254,8 @@
 
   <label><b>Color:</b></label>
   <select id="pillow-color" onchange="updatePillow(this)">
+        <option value="brown" data-mrp="80">Brown</option>
     <option value="grey" data-mrp="80">Steel Grey</option>
-    <option value="brown" data-mrp="80">Brown</option>
         <option value="white" data-mrp="80">white</option>
 
   </select>
@@ -279,12 +279,12 @@
   <img id="towel-img" src="./Images/towel_white.jpeg" />
     <div class="card-content">
 
-  <h4 id="towel-name">Hotel Towel – 500 GSM</h4>
+  <h4 id="towel-name">Premium Bath Towel – 500 GSM</h4>
 
   <label><b>Color:</b></label>
   <select id="towel-color" onchange="updateTowel(this)">
+        <option value="brown" data-mrp="398">brown</option>
     <option value="white" data-mrp="310">white</option>
-    <option value="brown" data-mrp="398">brown</option>
     <option value="taupe" data-mrp="398">Taupe</option>
 
   </select>
@@ -341,8 +341,8 @@ function updateBedSheet(select) {
   const offerPrice = Math.round(mrp * (100 - discountPercent) / 100);
 
   const imgMap = {
+        taupe: "./Images/bed_sheet_taupe.jpeg",
     grey: "./Images/bed_sheet_grey.jpeg",
-    taupe: "./Images/bed_sheet_taupe.jpeg",
     white: "./Images/bed_sheet_white.jpeg"
   };
 
@@ -371,8 +371,8 @@ function updateTowel(selt) {
 
 
   const imgMap = {
+        brown: "./Images/towel_brown.jpeg",
     taupe: "./Images/towel_taupe.jpeg",
-    brown: "./Images/towel_brown.jpeg",
     white: "./Images/towel_white.jpeg"
 
   };
@@ -402,8 +402,8 @@ function updatePillow(selval) {
 
 
   const imgMap = {
+        brown: "./Images/brownpillow.jpeg",
     grey: "./Images/greypillow.jpeg",
-    brown: "./Images/brownpillow.jpeg",
     white: "./Images/White_pillow.jpeg"
   };
 
