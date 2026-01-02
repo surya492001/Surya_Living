@@ -255,11 +255,21 @@
       <span class="discount">(30% OFF)</span>
     </div>
 
-   
-<div class="card-buttons">
-  <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp"  id="bedsheet-whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
+    <div class="cart-action">
+  <div class="qty-box">
+    <button onclick="changeQty(this, -1)">−</button>
+    <span class="qty">1</span>
+  <button onclick="changeQty(this, 1)" title="Maximum 3 allowed">+</button>
+  </div>
+
+  <button class="add-cart-btn"
+    onclick="addBedToCart(this)">
+    ADD TO CART
+  </button>
+  
 </div>
+   
+
 </div>
 
 
@@ -286,10 +296,23 @@
       <span class="discount">(20% OFF)</span>
     </div>
 
-  <div class="card-buttons">
-  <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp"  id="pillow-whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
+
+
+<div class="cart-action">
+  <div class="qty-box">
+    <button onclick="changeQty(this, -1)">−</button>
+    <span class="qty">1</span>
+  <button onclick="changeQty(this, 1)" title="Maximum 3 allowed">+</button>
+  </div>
+
+  <button class="add-cart-btn"
+    onclick="addPillowToCart(this)">
+    ADD TO CART
+  </button>
+  
 </div>
+
+  
 
 </div>
 
@@ -315,10 +338,22 @@
       <span class="discount">(30% OFF)</span>
     </div>
 
-  <div class="card-buttons">
-  <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp"  id="towel-whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
+
+
+<div class="cart-action">
+  <div class="qty-box">
+    <button onclick="changeQty(this, -1)">−</button>
+    <span class="qty">1</span>
+  <button onclick="changeQty(this, 1)" title="Maximum 3 allowed">+</button>
+  </div>
+
+  <button class="add-cart-btn"
+    onclick="addtowelToCart(this)">
+    ADD TO CART
+  </button>
+  
 </div>
+ 
 
 </div>
 
@@ -331,17 +366,31 @@
     <div class="card-content">
 
   <h4>Fleece Blanket – Camel | Quality - Double</h4>
-  <p>Color: Camel</p>
+    <label><b>Color:Camel</b></label>
+
 </div>
   <div class="price">
       <span class="mrp">₹<span id="blanket-mrp">898</span></span><br>
       <span class="offer">₹<span id="blanket-offer">628</span></span>
       <span class="discount">(30% OFF)</span>
     </div>
-  <div class="card-buttons">
-  <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp" id="blanket-whatsapp"  href="https://wa.me/918080124034">WhatsApp</a>
+
+<div class="cart-action">
+  <div class="qty-box">
+    <button onclick="changeQty(this, -1)">−</button>
+    <span class="qty">1</span>
+  <button onclick="changeQty(this, 1)" title="Maximum 3 allowed">+</button>
+  </div>
+
+  <button class="add-cart-btn"
+    onclick="addToCartWithQtyBlanket(this)">
+    ADD TO CART
+  </button>
+  
 </div>
+
+
+
 
 </div>
 
@@ -370,13 +419,7 @@ function updateBedSheet(select) {
  document.getElementById("bedsheet-mrp").innerText = mrp;
   document.getElementById("bedsheet-offer").innerText = offerPrice;
 
-  const  msg =
-    `Hi, I want to order Bedsheet (${color}).\n` +
-    `MRP: ₹${mrp}\n` +
-    `Offer Price (30% OFF): ₹${offerPrice}`;
-
-  document.getElementById("bedsheet-whatsapp").href =
-    "https://wa.me/918080124034?text=" + encodeURIComponent(msg);
+  
     
 }
 
@@ -402,13 +445,7 @@ function updateTowel(selt) {
 document.getElementById("towel-mrp").innerText = mrp3;
   document.getElementById("towel-offer").innerText = offerPrice3;
 
-   const  msg3 =
-    `Hi, I want to order Towel (${color3}).\n` +
-    `MRP: ₹${mrp3}\n` +
-    `Offer Price (30% OFF): ₹${offerPrice3}`;
-
-  document.getElementById("towel-whatsapp").href =
-    "https://wa.me/918080124034?text=" + encodeURIComponent(msg3);
+   
 }
 
 function updatePillow(selval) {
@@ -432,13 +469,7 @@ function updatePillow(selval) {
   document.getElementById("pillow-mrp").innerText = mrp2;
   document.getElementById("pillow-offer").innerText = offerPrice2;
 
-  const  msg2 =
-    `Hi, I want to order Pillow (${color2}).\n` +
-    `MRP: ₹${mrp2}\n` +
-    `Offer Price (30% OFF): ₹${offerPrice2}`;
-
-  document.getElementById("pillow-whatsapp").href =
-    "https://wa.me/918080124034?text=" + encodeURIComponent(msg2);
+ 
 }
 
 
@@ -450,13 +481,7 @@ function updateBlanket() {
   document.getElementById("blanket-mrp").innerText = mrp4;
   document.getElementById("blanket-offer").innerText = offerPrice4;
 
-  const msg4 =
-    `Hi, I want to order Fleece Blanket (Camel).\n` +
-    `MRP: ₹${mrp4}\n` +
-    `Offer Price (30% OFF): ₹${offerPrice4}`;
-
- document.getElementById("blanket-whatsapp").href =
-    "https://wa.me/918080124034?text=" + encodeURIComponent(msg4);
+  
 }
 
 document.addEventListener("DOMContentLoaded", updateBlanket);
@@ -497,6 +522,22 @@ updateBedSheet();
 updatePillow();
 updateTowel();
 </script>
+
+<div style="
+  background:linear-gradient(135deg,#111,#333);
+  color:#fff;
+  padding:14px 20px;
+  border-radius:8px;
+  font-size:15px;
+  font-weight:600;
+  text-align:center;
+  margin-bottom:15px;
+  letter-spacing:0.5px;
+">
+  🚚 <span style="color:#d4af37;">Free Shipping</span> on orders above <b>₹1000</b>
+</div>
+
+
 <div style="background:#f9f9f9; padding:20px; margin-top:30px; border-radius:8px; font-size:14px; color:#333;">
   <strong>Terms & Conditions</strong>
   <ul style="margin-top:10px; padding-left:18px;">
@@ -508,10 +549,421 @@ updateTowel();
 </div>
 
 
+<div id="cartIcon" onclick="toggleCart()">
+  🛒 <span id="cartCount">0</span>
+</div>
+
+<style>
+
+  #cartIcon{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#111;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:600;
+  z-index:1000;
+}
+#cartIcon span{
+  background:#d4af37;
+  color:#111;
+  padding:2px 8px;
+  border-radius:50%;
+  margin-left:6px;
+}
+
+#cartPopup{
+  position:fixed;
+  top:0;
+  right:-400px;
+  width:320px;
+  height:100%;
+  background:#fff;
+  box-shadow:-4px 0 10px rgba(0,0,0,0.2);
+  padding:20px;
+  transition:0.3s;
+  z-index:999;
+  overflow-y:auto;
+}
+#cartPopup.open{
+  right:0;
+}
+#cartPopup h3{
+  margin-top:0;
+}
+.cartItem{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.cartItem button{
+  background:red;
+  color:#fff;
+  border:none;
+  padding:2px 6px;
+  cursor:pointer;
+}
+#cartPopup button{
+  width:100%;
+  padding:10px;
+  background:#111;
+  color:#fff;
+  border:none;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.cart-action{
+  margin-top:15px;
+}
+
+.qty-box{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid #ddd;
+  padding:6px 12px;
+  margin-bottom:10px;
+}
+.qty-box button:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+}
+
+.qty-box button{
+  background:none;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+  width:30px;
+}
+
+.qty-box .qty{
+  width:30px;
+  text-align:center;
+  font-weight:600;
+}
+
+.add-cart-btn{
+  width:100%;
+  background:linear-gradient(135deg,#111,#333);
+  color:#fff;
+  padding:14px;
+  border:none;
+  letter-spacing:3px;
+  font-size:14px;
+  cursor:pointer;
+}
+#cartOverlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+  display:none;
+  z-index:998;
+}
+</style>
+
+
+<div id="cartPopup">
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+
+  <hr>
+
+  <p>Subtotal: ₹<span id="subtotal">0</span></p>
+  <p>Shipping: ₹<span id="shipping">0</span></p>
+  <p style="font-size:18px;font-weight:bold;">
+    Total: ₹<span id="total">0</span>
+  </p>
+
+  <button onclick="checkout()">Order via WhatsApp</button>
+
+  
+</div>
+
+<div id="cartOverlay" onclick="closeCart()"></div>
+
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price){
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+function updateCart(){
+  let itemsDiv = document.getElementById("cartItems");
+  let subtotal = 0;
+  itemsDiv.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    subtotal += item.price;
+    itemsDiv.innerHTML += `
+      <div class="cartItem">
+        <span>${item.name} (${item.color}) - ₹${item.price}</span>
+        <button onclick="removeItem(${index})">x</button>
+      </div>`;
+  });
+
+  let shipping = subtotal >= 1000 ? 0 : (cart.length ? 80 : 0);
+
+  document.getElementById("subtotal").innerText = subtotal;
+  document.getElementById("shipping").innerText = shipping;
+  document.getElementById("total").innerText = subtotal + shipping;
+  document.getElementById("cartCount").innerText = cart.length;
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+
+
+function checkout(){
+  if(cart.length === 0){
+    alert("Cart is empty");
+    return;
+  }
+
+  let message = "Order Details:%0A";
+  let subtotal = 0;
+
+  cart.forEach(i => {
+    message += `• ${i.name} - ₹${i.price}%0A`;
+    subtotal += i.price;
+  });
+
+  let shipping = subtotal >= 1000 ? 0 : 80;
+  let total = subtotal + shipping;
+
+  message += `%0ASubtotal: ₹${subtotal}`;
+  message += `%0AShipping: ₹${shipping}`;
+  message += `%0ATotal: ₹${total}`;
+
+  window.open("https://wa.me/918080124034?text=" + message);
+}
+
+
+
+function changeQty(el, change){
+  let qtyBox = el.parentElement;
+  let qtySpan = qtyBox.querySelector(".qty");
+  let plusBtn = qtyBox.querySelector("button:last-child");
+  let minusBtn = qtyBox.querySelector("button:first-child");
+
+  let qty = parseInt(qtySpan.innerText);
+  qty += change;
+
+  if(qty < 1) qty = 1;
+  if(qty > 3) qty = 3;
+
+  qtySpan.innerText = qty;
+
+  // Disable buttons
+  plusBtn.disabled = qty === 3;
+  minusBtn.disabled = qty === 1;
+}
+
+function addToCartWithQtyBlanket(btn){
+  let name = document.getElementById("blanket-name").innerText;
+
+  let colorSelect = document.getElementById("blanket-color");
+  let color = colorSelect.value;
+
+  let price = parseInt(
+    document.getElementById("blanket-offer").innerText
+  );
+
+  let qty = parseInt(
+    btn.closest(".card")?.querySelector(".qty")?.innerText || 1
+  );
+
+  // 🔒 Max 3 per color
+  let existingCount = cart.filter(
+    i => i.name === name && i.color === color
+  ).length;
+
+  if(existingCount + qty > 3){
+    alert("Maximum 3 allowed per color");
+    return;
+  }
+
+  for(let i = 0; i < qty; i++){
+    cart.push({
+      name: name,
+      color: color,
+      price: price
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+function addPillowToCart(btn){
+
+  let name = document.getElementById("pillow-name").innerText;
+
+  let colorSelect = document.getElementById("pillow-color");
+  let color = colorSelect.value;
+
+  let price = parseInt(
+    document.getElementById("pillow-offer").innerText
+  );
+
+  let qty = parseInt(
+    btn.closest(".card")?.querySelector(".qty")?.innerText || 1
+  );
+
+  // 🔒 Max 3 per color
+  let existingCount = cart.filter(
+    i => i.name === name && i.color === color
+  ).length;
+
+  if(existingCount + qty > 3){
+    alert("Maximum 3 allowed per color");
+    return;
+  }
+
+  for(let i = 0; i < qty; i++){
+    cart.push({
+      name: name,
+      color: color,
+      price: price
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+function addtowelToCart(btn){
+
+  let name = document.getElementById("towel-name").innerText;
+
+  let colorSelect = document.getElementById("towel-color");
+  let color = colorSelect.value;
+
+  let price = parseInt(
+    document.getElementById("towel-offer").innerText
+  );
+
+  let qty = parseInt(
+    btn.closest(".card")?.querySelector(".qty")?.innerText || 1
+  );
+
+  // 🔒 Max 3 per color
+  let existingCount = cart.filter(
+    i => i.name === name && i.color === color
+  ).length;
+
+  if(existingCount + qty > 3){
+    alert("Maximum 3 allowed per color");
+    return;
+  }
+
+  for(let i = 0; i < qty; i++){
+    cart.push({
+      name: name,
+      color: color,
+      price: price
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+function addBedToCart(btn){
+
+  let name = document.getElementById("bedsheet-name").innerText;
+
+  let colorSelect = document.getElementById("bedsheet-color");
+  let color = colorSelect.value;
+
+  let price = parseInt(
+    document.getElementById("bedsheet-offer").innerText
+  );
+
+  let qty = parseInt(
+    btn.closest(".card")?.querySelector(".qty")?.innerText || 1
+  );
+
+  // 🔒 Max 3 per color
+  let existingCount = cart.filter(
+    i => i.name === name && i.color === color
+  ).length;
+
+  if(existingCount + qty > 3){
+    alert("Maximum 3 allowed per color");
+    return;
+  }
+
+  for(let i = 0; i < qty; i++){
+    cart.push({
+      name: name,
+      color: color,
+      price: price
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+
+function toggleCart(){
+  let cart = document.getElementById("cartPopup");
+  let overlay = document.getElementById("cartOverlay");
+
+  cart.classList.toggle("open");
+
+  if(cart.classList.contains("open")){
+    overlay.style.display = "block";
+  }else{
+    overlay.style.display = "none";
+  }
+}
+
+
+
+
+
+function closeCart(){
+  document.getElementById("cartPopup").classList.remove("open");
+  document.getElementById("cartOverlay").style.display = "none";
+}
+
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeCart();
+  }
+});
+</script>
+
+
+
 
   <footer>
-    © 2025 Premium Accessories for Modern Living | Call or WhatsApp to Order
-    <div class="social-icons">
+  © 2025 Premium Accessories for Modern Living | 
+  <a href="tel:+918080124034" style="color:#d4af37; text-decoration:none;">
+    Call
+  </a> or 
+  <a href="https://wa.me/918080124034" target="_blank" style="color:#25D366; text-decoration:none;">
+    WhatsApp
+  </a> to Order | 
+  <a href="mailto:nivaraliving2026@gmail.com" style="color:#d4af37; text-decoration:none;">
+    nivaraliving2026@gmail.com
+  </a>    <div class="social-icons">
   <a href="https://www.facebook.com/NivaraLiving/" target="_blank">
     <i class="fab fa-facebook-f"></i>
   </a>
