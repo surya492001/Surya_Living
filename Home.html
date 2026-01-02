@@ -235,11 +235,11 @@
       <span class="discount">(30% OFF)</span>
     </div>
 
-    <div class="card-buttons">
+   
+<div class="card-buttons">
   <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp" id="bedsheet-whatsapp" target="_blank">WhatsApp</a>
+  <a class="btn whatsapp"  id="bedsheet-whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
 </div>
-
 </div>
 
 
@@ -268,7 +268,7 @@
 
   <div class="card-buttons">
   <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
+  <a class="btn whatsapp"  id="pillow-whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
 </div>
 
 </div>
@@ -283,7 +283,7 @@
 
   <label><b>Color:</b></label>
   <select id="towel-color" onchange="updateTowel(this)">
-        <option value="Brown" data-mrp="398">brown</option>
+        <option value="Brown" data-mrp="398">Brown</option>
     <option value="white" data-mrp="310">white</option>
     <option value="taupe" data-mrp="398">Taupe</option>
 
@@ -297,7 +297,7 @@
 
   <div class="card-buttons">
   <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
+  <a class="btn whatsapp"  id="towel-whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
 </div>
 
 </div>
@@ -320,7 +320,7 @@
     </div>
   <div class="card-buttons">
   <a class="btn" href="tel:+918080124034">Call Now</a>
-  <a class="btn whatsapp" href="https://wa.me/918080124034">WhatsApp</a>
+  <a class="btn whatsapp" id="blanket-whatsapp"  href="https://wa.me/918080124034">WhatsApp</a>
 </div>
 
 </div>
@@ -435,7 +435,7 @@ function updateBlanket() {
     `MRP: ₹${mrp4}\n` +
     `Offer Price (30% OFF): ₹${offerPrice4}`;
 
-  document.getElementById("blanket-whatsapp").href =
+ document.getElementById("blanket-whatsapp").href =
     "https://wa.me/918080124034?text=" + encodeURIComponent(msg4);
 }
 
