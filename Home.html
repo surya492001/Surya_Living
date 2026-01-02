@@ -177,7 +177,7 @@
   <!-- HERO -->
   <div class="hero">
     <div class="logo-container">
-  <img src="./Images/surya-living-logo.png" alt="Surya Living Logo" class="logo">
+  <img src="./Images/nivara-living-logo.png" alt="Nivara Living Logo" class="logo">
 </div>
 
     <h1><span style="font-size:22px;font-weight:400;">Premium Accessories for Modern Living</span></h1>
@@ -215,7 +215,7 @@
   <!-- BED SHEETS -->
 
 <div class="card"data-category="bedsheet">
-  <img id="bedsheet-img" src="./Images/bed_sheet_grey.jpeg" />
+  <img id="bedsheet-img" src="./Images/bed_sheet_taupe.jpeg" />
 
     <div class="card-content">
 
@@ -246,7 +246,7 @@
 
   <!-- PILLOW COVERS -->
 <div class="card"data-category="pillow">
-  <img id="pillow-img" src="./Images/greypillow.jpeg" />
+  <img id="pillow-img" src="./Images/brownpillow.jpeg" />
     <div class="card-content">
 
   <h4 id="pillow-name">Pillow Cover – 300 TC</h4>
@@ -276,14 +276,14 @@
 
   <!-- TOWELS -->
 <div class="card"data-category="towel">
-  <img id="towel-img" src="./Images/towel_white.jpeg" />
+  <img id="towel-img" src="./Images/towel_brown.jpeg" />
     <div class="card-content">
 
   <h4 id="towel-name">Premium Bath Towel – 500 GSM</h4>
 
   <label><b>Color:</b></label>
   <select id="towel-color" onchange="updateTowel(this)">
-        <option value="brown" data-mrp="398">brown</option>
+        <option value="Brown" data-mrp="398">brown</option>
     <option value="white" data-mrp="310">white</option>
     <option value="taupe" data-mrp="398">Taupe</option>
 
@@ -307,7 +307,7 @@
 
   <!-- BLANKET -->
 <div class="card"data-category="duvet">
-  <img src="./Images/blanket_camel.jpeg" />
+<img id="duvet-img" src="./Images/camel_1.jpg" onclick="toggleDuvet()" />
     <div class="card-content">
 
   <h4>Fleece Blanket – Camel | Quality - Double</h4>
@@ -357,6 +357,7 @@ function updateBedSheet(select) {
 
   document.getElementById("bedsheet-whatsapp").href =
     "https://wa.me/918080124034?text=" + encodeURIComponent(msg);
+    
 }
 
 function updateTowel(selt) {
@@ -370,14 +371,14 @@ function updateTowel(selt) {
   const offerPrice3= Math.round(mrp3 * (100 - discountPercent3) / 100);
 
 
-  const imgMap = {
-        brown: "./Images/towel_brown.jpeg",
+  const imgMap3 = {
+        Brown: "./Images/towel_brown.jpeg",
     taupe: "./Images/towel_taupe.jpeg",
     white: "./Images/towel_white.jpeg"
 
   };
 
-  document.getElementById("towel-img").src = imgMap[color3];
+  document.getElementById("towel-img").src = imgMap3[color3];
 document.getElementById("towel-mrp").innerText = mrp3;
   document.getElementById("towel-offer").innerText = offerPrice3;
 
@@ -386,7 +387,7 @@ document.getElementById("towel-mrp").innerText = mrp3;
     `MRP: ₹${mrp3}\n` +
     `Offer Price (30% OFF): ₹${offerPrice3}`;
 
-  document.getElementById("bedsheet-whatsapp").href =
+  document.getElementById("towel-whatsapp").href =
     "https://wa.me/918080124034?text=" + encodeURIComponent(msg3);
 }
 
@@ -401,13 +402,13 @@ function updatePillow(selval) {
   const offerPrice2= Math.round(mrp2 * (100 - discountPercent2) / 100);
 
 
-  const imgMap = {
+  const imgMap2 = {
         brown: "./Images/brownpillow.jpeg",
     grey: "./Images/greypillow.jpeg",
     white: "./Images/White_pillow.jpeg"
   };
 
-  document.getElementById("pillow-img").src = imgMap[color2];
+  document.getElementById("pillow-img").src = imgMap2[color2];
   document.getElementById("pillow-mrp").innerText = mrp2;
   document.getElementById("pillow-offer").innerText = offerPrice2;
 
@@ -416,7 +417,7 @@ function updatePillow(selval) {
     `MRP: ₹${mrp2}\n` +
     `Offer Price (30% OFF): ₹${offerPrice2}`;
 
-  document.getElementById("bedsheet-whatsapp").href =
+  document.getElementById("pillow-whatsapp").href =
     "https://wa.me/918080124034?text=" + encodeURIComponent(msg2);
 }
 
@@ -434,7 +435,7 @@ function updateBlanket() {
     `MRP: ₹${mrp4}\n` +
     `Offer Price (30% OFF): ₹${offerPrice4}`;
 
-  document.getElementById("bedsheet-whatsapp").href =
+  document.getElementById("blanket-whatsapp").href =
     "https://wa.me/918080124034?text=" + encodeURIComponent(msg4);
 }
 
@@ -464,6 +465,13 @@ function filterProducts() {
     }
   });
 }
+let toggle = false;
+function toggleDuvet() {
+  toggle = !toggle;
+  document.getElementById("duvet-img").src =
+    toggle ? "./Images/camel2.jpg" : "./Images/camel_1.jpg";
+}
+
 
 updateBedSheet();
 updatePillow();
