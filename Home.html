@@ -698,16 +698,26 @@ function addToCart(name, price){
   updateCart();
 }
 
+
+
 function updateCart(){
   let itemsDiv = document.getElementById("cartItems");
   let subtotal = 0;
+  let totalQty = 0;
+
   itemsDiv.innerHTML = "";
 
   cart.forEach((item, index) => {
-    subtotal += item.price;
+    let itemTotal = item.price * item.qty;
+    subtotal += itemTotal;
+    totalQty += item.qty;
+
     itemsDiv.innerHTML += `
       <div class="cartItem">
-        <span>${item.name} (${item.color}) - ₹${item.price}</span>
+        <div>
+          <b>${item.name} (${item.color})</b><br>
+          Qty: ${item.qty} × ₹${item.price} = ₹${itemTotal}
+        </div>
         <button onclick="removeItem(${index})">x</button>
       </div>`;
   });
@@ -717,8 +727,10 @@ function updateCart(){
   document.getElementById("subtotal").innerText = subtotal;
   document.getElementById("shipping").innerText = shipping;
   document.getElementById("total").innerText = subtotal + shipping;
-  document.getElementById("cartCount").innerText = cart.length;
+  document.getElementById("cartCount").innerText = totalQty;
 }
+
+
 
 function removeItem(index){
   cart.splice(index,1);
@@ -773,152 +785,169 @@ function changeQty(el, change){
   minusBtn.disabled = qty === 1;
 }
 
+
+
 function addToCartWithQtyBlanket(btn){
+
   let name = document.getElementById("blanket-name").innerText;
-
-  let colorSelect = document.getElementById("blanket-color");
-  let color = colorSelect.value;
-
-  let price = parseInt(
-    document.getElementById("blanket-offer").innerText
-  );
+  let color = document.getElementById("blanket-color").value;
+  let price = parseInt(document.getElementById("blanket-offer").innerText);
 
   let qty = parseInt(
     btn.closest(".card")?.querySelector(".qty")?.innerText || 1
   );
 
-  // 🔒 Max 3 per color
-  let existingCount = cart.filter(
+  // 🔍 Check if same product + color already exists
+  let existingItem = cart.find(
     i => i.name === name && i.color === color
-  ).length;
+  );
 
-  if(existingCount + qty > 3){
-    alert("Maximum 3 allowed per color");
-    return;
-  }
-
-  for(let i = 0; i < qty; i++){
+  if(existingItem){
+    if(existingItem.qty + qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
+    existingItem.qty += qty;   // ✅ increase quantity
+  } else {
+    if(qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
     cart.push({
       name: name,
       color: color,
-      price: price
+      price: price,
+      qty: qty
     });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 }
+
+
 
 function addPillowToCart(btn){
 
   let name = document.getElementById("pillow-name").innerText;
-
-  let colorSelect = document.getElementById("pillow-color");
-  let color = colorSelect.value;
-
-  let price = parseInt(
-    document.getElementById("pillow-offer").innerText
-  );
+  let color = document.getElementById("pillow-color").value;
+  let price = parseInt(document.getElementById("pillow-offer").innerText);
 
   let qty = parseInt(
     btn.closest(".card")?.querySelector(".qty")?.innerText || 1
   );
 
-  // 🔒 Max 3 per color
-  let existingCount = cart.filter(
+  // 🔍 Check if same product + color already exists
+  let existingItem = cart.find(
     i => i.name === name && i.color === color
-  ).length;
+  );
 
-  if(existingCount + qty > 3){
-    alert("Maximum 3 allowed per color");
-    return;
-  }
-
-  for(let i = 0; i < qty; i++){
+  if(existingItem){
+    if(existingItem.qty + qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
+    existingItem.qty += qty;   // ✅ increase quantity
+  } else {
+    if(qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
     cart.push({
       name: name,
       color: color,
-      price: price
+      price: price,
+      qty: qty
     });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 }
+
+
 
 function addtowelToCart(btn){
 
   let name = document.getElementById("towel-name").innerText;
-
-  let colorSelect = document.getElementById("towel-color");
-  let color = colorSelect.value;
-
-  let price = parseInt(
-    document.getElementById("towel-offer").innerText
-  );
+  let color = document.getElementById("towel-color").value;
+  let price = parseInt(document.getElementById("towel-offer").innerText);
 
   let qty = parseInt(
     btn.closest(".card")?.querySelector(".qty")?.innerText || 1
   );
 
-  // 🔒 Max 3 per color
-  let existingCount = cart.filter(
+  // 🔍 Check if same product + color already exists
+  let existingItem = cart.find(
     i => i.name === name && i.color === color
-  ).length;
+  );
 
-  if(existingCount + qty > 3){
-    alert("Maximum 3 allowed per color");
-    return;
-  }
-
-  for(let i = 0; i < qty; i++){
+  if(existingItem){
+    if(existingItem.qty + qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
+    existingItem.qty += qty;   // ✅ increase quantity
+  } else {
+    if(qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
     cart.push({
       name: name,
       color: color,
-      price: price
+      price: price,
+      qty: qty
     });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 }
+
+
+
+
+
 
 function addBedToCart(btn){
 
   let name = document.getElementById("bedsheet-name").innerText;
-
-  let colorSelect = document.getElementById("bedsheet-color");
-  let color = colorSelect.value;
-
-  let price = parseInt(
-    document.getElementById("bedsheet-offer").innerText
-  );
+  let color = document.getElementById("bedsheet-color").value;
+  let price = parseInt(document.getElementById("bedsheet-offer").innerText);
 
   let qty = parseInt(
     btn.closest(".card")?.querySelector(".qty")?.innerText || 1
   );
 
-  // 🔒 Max 3 per color
-  let existingCount = cart.filter(
+  // 🔍 Check if same product + color already exists
+  let existingItem = cart.find(
     i => i.name === name && i.color === color
-  ).length;
+  );
 
-  if(existingCount + qty > 3){
-    alert("Maximum 3 allowed per color");
-    return;
-  }
-
-  for(let i = 0; i < qty; i++){
+  if(existingItem){
+    if(existingItem.qty + qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
+    existingItem.qty += qty;   // ✅ increase quantity
+  } else {
+    if(qty > 3){
+      alert("Maximum 3 allowed per color");
+      return;
+    }
     cart.push({
       name: name,
       color: color,
-      price: price
+      price: price,
+      qty: qty
     });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 }
+
 
 
 function toggleCart(){
