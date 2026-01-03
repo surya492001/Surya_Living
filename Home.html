@@ -953,9 +953,12 @@ updateTowel();
 </button>
 </div>
 
+<div id="ConfirmPay" style="display:none;">
+
 <button class="upiBtn outline" onclick="paymentCompleted()">
   I have completed payment
 </button>
+</div>
 
 
 
@@ -1090,6 +1093,7 @@ message += "Order Details:%0A";
 });
 
 document.getElementById("upiSection").style.display = "block";
+document.getElementById("ConfirmPay").style.display = "block";
 
   
 }
@@ -1360,12 +1364,12 @@ function payByUPIApp(){
 
   alert(
     "Please complete the UPI payment.\n\n" +
-    "After payment, send the payment screenshot or UTR number on WhatsApp to confirm your order."
+    "After payment, send the payment screenshot on WhatsApp to confirm your order."
   );
 
   location.href =
     "upi://pay" +
-    "?pa=surya@okaxis" +
+    "?pa=surya492001@okaxis" +
     "&pn=Suryanarayn%20Satheesh%20Pillai" +
     "&am=" + total +
     "&cu=INR" +
