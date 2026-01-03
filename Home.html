@@ -826,6 +826,25 @@ updateTowel();
   color:#000;
 }
 
+.formLabel{
+  display:block;
+  font-size:13px;
+  margin:6px 0 4px;
+  transition:0.3s;
+}
+
+.formLabel.disabled{
+  color:#aaa;
+}
+
+.formLabel.active{
+  color:#111;
+  font-weight:600;
+}
+.checkoutBtn.disabled{
+  opacity:0.5;
+  pointer-events:none;
+}
 
 </style>
 
@@ -849,13 +868,26 @@ updateTowel();
     Total: ₹<span id="total">0</span>
   </p>
 
-  <input type="text" id="customerName"
+<label id="nameLabel" class="formLabel disabled">
+  Customer Name
+</label>
+<input type="text" id="customerName"
   placeholder="Enter your name"
-  style="width:100%; padding:8px; margin:10px 0; border:1px solid #ccc; border-radius:4px;">
-  
-  <button class="checkoutBtn" onclick="checkout()">Order via WhatsApp</button>
+  oninput="validateCheckout()">
+
+<label id="phoneLabel" class="formLabel disabled">
+  Phone Number
+</label>
+<input type="tel" id="customerPhone"
+  placeholder="Enter phone number"
+  oninput="validateCheckout()">
+
 
   
+<button class="checkoutBtn" id="checkoutBtn" onclick="checkout()">
+  Order via WhatsApp
+</button>
+
 </div>
 
 <div id="cartOverlay" onclick="closeCart()"></div>
@@ -945,10 +977,18 @@ function checkout(){
     return;
   }
 
-let customerName = document.getElementById("customerName").value || "Customer";
+let customerName = document.getElementById("customerName").value.trim();
+let customerPhone = document.getElementById("customerPhone").value.trim();
+
+if(!customerName || !customerPhone){
+  alert("Please enter your name and phone number");
+  return;
+}
+
 
 message = `NIVARA LIVING%0A`;
 message += `Customer Name: ${customerName}%0A%0A`;
+message += `Customer PhoeNo: ${customerPhone}%0A%0A`;
 message += "Order Details:%0A";
 
   let subtotal = 0;
@@ -1212,6 +1252,29 @@ document.getElementById("shippingText").innerHTML =
 
 }
 
+
+function validateCheckout(){
+  let name = document.getElementById("customerName").value.trim();
+  let phone = document.getElementById("customerPhone").value.trim();
+
+  let nameLabel = document.getElementById("nameLabel");
+  let phoneLabel = document.getElementById("phoneLabel");
+
+  // label states
+  name ? nameLabel.classList.add("active") : nameLabel.classList.remove("active");
+  phone ? phoneLabel.classList.add("active") : phoneLabel.classList.remove("active");
+
+  let phoneValid = /^[0-9]{10}$/.test(phone);
+
+  let btn = document.getElementById("checkoutBtn");
+
+if(name && phoneValid){
+  btn.classList.remove("disabled");
+}else{
+  btn.classList.add("disabled");
+}
+
+}
 
 </script>
 
